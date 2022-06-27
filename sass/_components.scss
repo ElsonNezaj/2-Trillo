@@ -14,6 +14,12 @@
     align-items: center;
     justify-content: center;
 
+    @media only screen and (max-width : $bp-smallest) {
+        order: 1;
+        flex: 0 0 100%;
+        margin-left: -1.2rem;
+    }
+
     &_input {
         font-family: inherit;
         font-size: inherit;
@@ -26,10 +32,17 @@
         transition: all .3s;
         margin-right: -3.25rem;
 
+        
+
         &:focus {
             outline: none;
             width: 100%;
             background-color: var(--color-grey-light-3);
+            @media only screen and (max-width : $bp-smallest) {
+                
+                width: 90%;
+            }
+           
         }
 
         &::-webkit-input-placeholder {
@@ -52,6 +65,7 @@
 
         &:active {
             transform: translateY(2px);
+  
         }
     }
 
@@ -129,12 +143,25 @@
     list-style: none;
     margin-top: 3.5rem;
 
+    @media only screen and  (max-width: $bp-tablet) {
+        display: flex;
+        margin: 0;
+    }
+
     &_item {
         position: relative;
       
 
         &:not(:last-child){
             margin-bottom: .5rem;
+
+            @media only screen and  (max-width: $bp-tablet) {
+                margin-bottom: 0;
+            }
+        }
+
+        @media only screen and  (max-width: $bp-tablet) {
+            flex: 1;
         }
     }
 
@@ -169,6 +196,16 @@
         z-index: 10;
         display: flex;
         align-items: center;
+
+        @media only screen and  (max-width: $bp-tablet) {
+           justify-content: center;
+           padding: 2rem;
+        }
+
+        @media only screen and (max-width : $bp-small) {
+           flex-direction: column;
+           padding: 1.5rem 0.5rem;
+         }
     }
 
     &_icon {
@@ -176,6 +213,13 @@
         height: 1.75rem;
         margin-right: 2rem;
         fill: currentColor;
+
+        @media only screen and (max-width : $bp-small) {
+           margin-right: 0;
+           margin-bottom: .7rem;
+           width: 1.5rem;
+           height: 1.5rem;
+        }
     }
 
 
@@ -190,6 +234,10 @@
     text-align: center;
     padding: 2.5rem;
     color: var(--color-grey-light-4);
+
+    @media only screen and  (max-width: $bp-tablet) {
+        display: none;
+    }
 }
 
 
@@ -218,6 +266,11 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 1.5rem 3rem;
+
+        @media only screen and (max-width : $bp-small) {
+          font-size: 1.8rem;
+          padding: 1.25rem 2rem;
+         }
     }
 
     &_stars {
@@ -252,17 +305,29 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        @media only screen and (max-width : $bp-small) {
+           padding:  0 1.5rem;
+         }
     }
 
     &_rating-count {
         font-size: .8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width : $bp-small) {
+            font-size: .5rem;
+          }
     }
 
     &_rating-average {
         font-size: 2.25rem;
         font-weight: 300;
         margin-bottom: -0.3rem;
+
+        @media only screen and (max-width : $bp-small) {
+            font-size: 1.8rem;
+          }
     }
     
 }
@@ -282,8 +347,17 @@
     cursor: pointer;
     transition: all .2s;
 
+    & span {
+        margin-left: .3rem;
+        transition: margin-left .2s;
+    }
+
     &:hover {
         color: var(--color-grey-dark-1);
+
+        span {
+            margin-left: .8rem;
+        }
     }
 
     &:focus {
@@ -311,4 +385,223 @@
 }
 
 //////////////////////////////////////
-// Description
+// List
+.list {
+    list-style: none;
+    margin: 3rem 0;
+    padding: 3rem 0;
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &_item {
+        flex: 0 0 50%;
+        margin-bottom: .7rem;
+
+        display: flex;
+        align-items: center;
+    }
+
+    &_item::before {
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        margin-right: .7rem;
+
+        // Older Browsers
+        background-image: url(../img/chevron-thin-right.svg);
+        background-size: cover;
+
+        // Newer Browsers - mask
+        @supports (-webkit-mask-image:  url()) or (mask-image: url()){
+        background-color: var(--color-primary);
+        mask-image: url(../img/chevron-thin-right.svg);
+        mask-size: cover;
+        -webkit-mask-image: url(../img/chevron-thin-right.svg);
+        -webkit-mask-size: cover;
+        background-image: none;
+        }
+    }
+}
+
+
+//////////////////////////////////////
+// Paragraph
+.paragraph:not(:last-of-type) {
+    margin-bottom: 2rem;
+}
+
+//////////////////////////////////////
+// Recommend
+.recommend {
+    font-size: 1.3rem;
+    color: var(--color-grey-dark-3);
+
+    display: flex;
+    align-items: center;
+
+
+    &_count {
+        margin-right: auto;
+    }
+
+    &_friends {
+        display: flex;
+    }
+
+    &_photo {
+        box-sizing: content-box;
+        height: 4rem; 
+        width: 4rem;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        
+        &:not(:last-child) {
+            margin-right: -2rem;
+        }
+    }
+}
+
+
+//////////////////////////////////////
+// REVIEWS
+.review {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+
+    @media only screen and (max-width : $bp-tablet ) {
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    &::before {
+        content: "\201C";
+        position: absolute;
+        font-family: sans-serif;
+        line-height: 1;
+        top: -3rem;
+        left: -1rem;
+        font-size: 20rem;
+        color: var(--color-grey-light-2);
+        z-index: 1;
+    }
+
+
+    &_text {
+        margin-bottom: 2rem;
+        z-index: 10;
+        position: relative;
+    }
+
+    &_user {
+        display: flex;
+        align-items: center;
+    }
+
+    &_photo {
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+
+    &_user-box {
+        margin-right: auto;
+    }
+
+    &_username {
+        color: var(--color-grey-dark-1);
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+    }
+
+    &_user-date {
+        color: var(--color-grey-dark-3);
+        font-size: 1rem;
+    }
+
+    &_rating {
+        font-size: 2.2rem;
+        color: var(--color-primary);
+        font-weight: 300;
+    }
+}
+
+
+//////////////////////////////////////
+// CTA
+.cta {
+    padding: 3.5rem 0;
+    text-align: center;
+
+    @media only screen and (max-width : $bp-tablet ) {
+        padding: 2.5rem 0;
+    }
+
+    &_book-now {
+        font-size: 2rem;
+        font-weight: 300;
+        margin-bottom: 3.5rem;  
+        text-transform: uppercase;
+    }
+}
+
+//////////////////////////////////////
+// CTA 
+.btn {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: none;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    & > * {
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+        transition: all .2s; 
+    }
+
+    &_visible {
+        padding: 2rem 7.5rem;
+    }
+
+    &_invisible {
+        position: absolute;
+        padding: 2rem;
+        left: 0;
+        top: -100%;
+    }
+
+    &:hover {
+        background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+    }
+
+    &:hover  &_visible {
+        transform: translateY(100%);
+    }
+
+    &:hover  &_invisible {
+        top: 0;
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+       
+}
