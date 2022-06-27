@@ -17,7 +17,14 @@
                 <img class="logo" src="img/logo.png" alt="Trello logo">
 
                 <form action="#" class="search">
-                    <input type="text" class="search_input" placeholder="Search Hotels">
+                    <input type="text" list="search_input-data" class="search_input" placeholder="Search Hotels">
+                    <datalist id="search_input-data">
+                        <option>Hotel Las Palmas</option>
+                        <option>Marco Hotel</option>
+                        <option>The Central Residence</option>
+                        <option>Santiago Resort</option>
+                        <option>Hotel Republic</option>
+                    </datalist>
                     
                     <button class="search_button">
                         <svg class="search_icon">
@@ -39,12 +46,29 @@
                             <use xlink:href="img/sprite.svg#icon-chat"></use>
                         </svg>
                         <span class="user-nav_notification">13</span>
+
+                        <div class="user-nav_icon-box-dropdown">
+                            <p class="user-nav_icon-box-dropdown-text"><span>Andrew</span> : Whats Up!  </p>
+                            <p class="user-nav_icon-box-dropdown-text"><span>Martha</span> : Where have you decided to go?</p>
+                            <p class="user-nav_icon-box-dropdown-text"><span>Jack</span> : How are you?</p>
+                        </div>
                     </div>
 
-    <!-- Profile--> <div class="user-nav_user">
+                    
+    <!-- Profile--> <div class="user-nav_user">     
                         <img src="img/user.jpg" alt="User photo" class="user-nav_photo">
                         <span class="user-nav_name">Soni</span>
-                    </div> 
+                    
+                    <div class="user-nav_user-dropdown">
+                        <div class="user-nav_user-dropdown-content">
+                        <a href="#">Profile <ion-icon name="person-circle-outline" class="icon"></ion-icon></a>
+                        <a href="#">Activity <ion-icon name="stats-chart-outline" class="icon"></ion-icon></a>
+                        <a href="#">Terms <ion-icon name="receipt-outline" class="icon"></ion-icon></a>
+                        <a href="#">Settings <ion-icon name="cog-outline" class="icon"></ion-icon></a>
+                        </div>
+                    </div>
+
+                </div>
                 </nav>
             </header>
 
@@ -98,15 +122,24 @@
                 <main class="hotel-view">
                     <div class="gallery">                        <!--Gallery-->
                         <figure class="gallery_item">
+                           
                             <img class="gallery_photo" src="img/hotel-1.jpg" alt="Photo of hotel 1">
+                            <figcaption class="gallery_caption ">Hotel Las Palmas </figcaption>
+  
                         </figure>
 
                         <figure class="gallery_item">
+                      
                             <img class="gallery_photo" src="img/hotel-2.jpg" alt="Photo of hotel 2">
+                            <figcaption class="gallery_caption ">Marco Hotel</figcaption>
+                     
                         </figure>
 
                         <figure class="gallery_item">
+                  
                             <img class="gallery_photo" src="img/hotel-3.jpg" alt="Photo of hotel 3">
+                            <figcaption class="gallery_caption">Santiago Resort</figcaption>
+                   
                         </figure>
                     </div>
 
@@ -224,5 +257,8 @@
             </div>
         </div>
         
+
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
 </html>

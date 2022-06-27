@@ -31,9 +31,7 @@
         width: 90%;
         transition: all .3s;
         margin-right: -3.25rem;
-
         
-
         &:focus {
             outline: none;
             width: 100%;
@@ -50,6 +48,7 @@
             color: var(--color-grey-light-4);
         }
     }
+
 
     &_input:focus + &_button {
         background-color: var(--color-grey-light-3);
@@ -91,13 +90,74 @@
         display: flex;
         align-items: center;
     }
-
+ 
     & > *:hover {
         background-color: var(--color-grey-light-2);
     }
 
     &_icon-box {
        position: relative;
+        
+       &-dropdown{
+           z-index: 10000;
+           display: none;
+            width: 25rem;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translatex(-50%);
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 .4rem .8rem rgba(#000, 0.25) ;
+            font-size: 1.2rem;
+       
+            &-text {
+               color: var(--color-grey-dark-2);
+               font-size: 1rem;
+               border-bottom: 1px solid var(--color-grey-light-2);
+               padding-bottom: .5rem;
+               width: 100%;
+               position: relative;
+        
+
+                &:not(:last-child) {
+                    margin-bottom: 2rem;
+                }
+
+                & span {
+                    font-weight: 600;
+                    color: var(--color-primary-dark);
+                    font-size: 1.5rem;
+                }
+
+                &::after {
+                    content: "";
+                    background-color: var(--color-primary);
+                    color: #fff;
+                    position: absolute;
+                    width: 1rem;
+                    height: 1rem;
+                    top: 50%;
+                    left: 100%;
+                    transform: translate(-50%, -100%);
+                    border-radius: 50%;
+                }
+
+                &:hover span {
+                   color: var(--color-grey-dark-3);
+                }
+
+                &:hover  {
+                    color: var(--color-primary);
+                    font-size: 1.1rem;
+                 }
+            }
+        }
+
+        &:hover &-dropdown {
+            display: block;
+        }
+
     }
 
     &_icon {
@@ -117,7 +177,7 @@
         top: 1.5rem;
         right: 1.1rem;
         
-        display: flex;
+        display: flex; 
         justify-content: center;
         align-items: center;
     }
@@ -129,9 +189,55 @@
         margin-right: 1rem;
     }
 
-    &_name {
+    &_user {
+        position: relative;
+ 
 
+        // Dropdown Menu
+        &-dropdown {
+            z-index: 10000000;
+            display: none;
+            width: 11.5rem;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 .4rem .8rem rgba(#000, 0.25) ;
+
+            &-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        & a {
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--color-grey-dark-1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+
+            &:hover {
+                color: var(--color-primary);
+                border-bottom: 1px solid var(--color-grey-light-4);
+                box-sizing: content-box;
+            }
+        }
+
+        &:hover &-dropdown {
+            display: block;
+        }
     }
+}
+
+.icon {
+    height: 2rem;
+    width: 2rem;
 }
 
 
@@ -245,11 +351,49 @@
 // GALLERY
 .gallery {
     display: flex;
+    overflow: hidden;
+
+    &_item {
+        position: relative;
+        overflow: hidden;
+       
+
+        &:hover .gallery_caption {
+            opacity: 100;
+            visibility: visible;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover .gallery_photo {
+            filter: blur(1px) brightness(80%);
+            transform: scale(1);
+        }
+    }
 
     &_photo {
         width: 100%;
-        display: block;
+        transform: scale(1.5);
+        transition: all .5s;
     }
+
+    &_caption {
+        text-align: center;
+        width: 100%;
+        font-size: 2.4rem;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        color: white;
+        font-weight: 600;
+        opacity: 0;
+        visibility: hidden;
+
+        transition: all .5s;
+    }
+     
 }
 
 
